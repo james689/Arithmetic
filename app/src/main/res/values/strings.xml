@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Arithmetic</string>
-    <string name="text_favorites">Favorites</string>
-    <string name="text_schedules">Schedules</string>
-    <string name="text_music">Music</string>
+    <string name="menu_addition">Addition</string>
+    <string name="menu_subtraction">Subtraction</string>
+    <string name="menu_multiplication">Multiplication</string>
+    <string name="menu_division">Division</string>
+    <string name="new_question">New Question</string>
+    <string name="show_answer">Show Answer</string>
+    <string name="answer">Answer: 8254</string>
+    <string name="question">Question: 2345 + 1824</string>
 </resources>

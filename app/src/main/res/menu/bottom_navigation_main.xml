@@ -2,18 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_favorites"
-        android:enabled="true"
-        android:title="@string/text_favorites"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/action_addition"
+        android:title="@string/menu_addition" />
     <item
-        android:id="@+id/action_schedules"
-        android:enabled="true"
-        android:title="@string/text_schedules"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/action_subtraction"
+        android:title="@string/menu_subtraction" />
     <item
-        android:id="@+id/action_music"
-        android:enabled="true"
-        android:title="@string/text_music"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/action_multiplication"
+        android:title="@string/menu_multiplication" />
+    <item
+        android:id="@+id/action_division"
+        android:title="@string/menu_division" />
 </menu>
