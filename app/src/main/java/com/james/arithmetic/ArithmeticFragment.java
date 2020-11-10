@@ -10,18 +10,24 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.james.arithmetic.question.Question;
+import com.james.arithmetic.question.QuestionFactory;
 
 public class ArithmeticFragment extends Fragment {
 
     public static final String TAG = ArithmeticFragment.class.getSimpleName();
     public static final String KEY_ANSWER_VISIBLE = "answer_visible";
+    public static final String KEY_PROBLEM_TYPE = "problem_type";
+    public static final String KEY_CURRENT_QUESTION = "current_question";
 
     public enum ProblemType {ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION}
 
     private ProblemType selectedProblemType = ProblemType.ADDITION;
-    private TextView answer;
+    private TextView questionTextView;
+    private TextView answerTextView;
     private Button showAnswerButton;
     private boolean answerVisible = false;
+    private Question currentQuestion = null;
 
     public static ArithmeticFragment newInstance() {
         return new ArithmeticFragment();
@@ -32,6 +38,8 @@ public class ArithmeticFragment extends Fragment {
         super.onSaveInstanceState(outState);
         // save whether the answer TextView is visible or not
         outState.putBoolean(KEY_ANSWER_VISIBLE, answerVisible);
+        outState.putSerializable(KEY_PROBLEM_TYPE, selectedProblemType);
+        outState.putSerializable(KEY_CURRENT_QUESTION, currentQuestion);
     }
 
     @Override
@@ -41,16 +49,27 @@ public class ArithmeticFragment extends Fragment {
 
         if (savedInstanceState != null) {
             answerVisible = savedInstanceState.getBoolean(KEY_ANSWER_VISIBLE);
+            selectedProblemType = (ProblemType) savedInstanceState.getSerializable(KEY_PROBLEM_TYPE);
+            currentQuestion = (Question) savedInstanceState.getSerializable(KEY_CURRENT_QUESTION);
         }
-        answer = view.findViewById(R.id.answer);
-        answer.setVisibility(answerVisible ? View.VISIBLE : View.GONE);
+        answerTextView = view.findViewById(R.id.answer);
+        answerTextView.setVisibility(answerVisible ? View.VISIBLE : View.GONE);
+
+        questionTextView = view.findViewById(R.id.question);
+        if (currentQuestion == null) {
+            questionTextView.setText("1+1");
+        } else {
+            questionTextView.setText(currentQuestion.toString());
+            answerTextView.setText("Answer: " + currentQuestion.getAnswer());
+        }
 
         Button newQuestionButton = view.findViewById(R.id.new_question);
         newQuestionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // generate a new question
-                Log.d(TAG, "new question button clicked");
+                Log.d(TAG, "new question button clicked, problem type = " + selectedProblemType);
+                newQuestion();
             }
         });
 
@@ -61,7 +80,7 @@ public class ArithmeticFragment extends Fragment {
             public void onClick(View view) {
                 // show/hide the answer
                 Log.d(TAG, "show/hide answer button clicked");
-                answer.setVisibility(answerVisible ? View.GONE : View.VISIBLE);
+                answerTextView.setVisibility(answerVisible ? View.GONE : View.VISIBLE);
                 answerVisible = !answerVisible;
                 updateShowAnswerButtonText();
             }
@@ -98,8 +117,31 @@ public class ArithmeticFragment extends Fragment {
     }
 
     // helper methods
+
     private void updateShowAnswerButtonText() {
         showAnswerButton.setText(answerVisible ? R.string.hide_answer : R.string.show_answer);
+    }
+
+    private void newQuestion() {
+        currentQuestion = getQuestion();
+        questionTextView.setText(currentQuestion.toString());
+        answerTextView.setText("Answer: " + currentQuestion.getAnswer());
+    }
+
+    private Question getQuestion() {
+        switch (selectedProblemType) {
+            case ADDITION:
+                return QuestionFactory.createAdditionQuestion(4,3,
+                        4,3);
+            case SUBTRACTION:
+                return QuestionFactory.createSubtractionQuestion(4,3,
+                        4,3);
+            case MULTIPLICATION: QuestionFactory.createSubtractionQuestion(4,3,
+                    4,3);
+            case DIVISION: QuestionFactory.createSubtractionQuestion(4,3,
+                    4,3);
+            default: return null;
+        }
     }
 }
 
