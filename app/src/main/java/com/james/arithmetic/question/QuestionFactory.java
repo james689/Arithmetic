@@ -26,6 +26,26 @@ public class QuestionFactory {
         return new SubtractionQuestion(largest, smallest);
     }
 
+    public static MultiplicationQuestion createMultiplicationQuestion(int numIntegerPartDigitsOp1, int numFractionalPartDigitsOp1,
+                                                                int numIntegerPartDigitsOp2, int numFractionalPartDigitsOp2) {
+        double op1 = randomNumber(numIntegerPartDigitsOp1, numFractionalPartDigitsOp1);
+        double op2 = randomNumber(numIntegerPartDigitsOp2, numFractionalPartDigitsOp2);
+
+        return new MultiplicationQuestion(op1, op2);
+    }
+
+    public static DivisionQuestion createDivisionQuestion(int numIntegerPartDigitsOp1, int numFractionalPartDigitsOp1,
+                                                                      int numIntegerPartDigitsOp2, int numFractionalPartDigitsOp2) {
+        double op1 = randomNumber(numIntegerPartDigitsOp1, numFractionalPartDigitsOp1);
+        double op2 = randomNumber(numIntegerPartDigitsOp2, numFractionalPartDigitsOp2);
+
+        // make sure the divisor is smaller than the dividend
+        double divisor = Math.min(op1, op2);
+        double dividend = Math.max(op1, op2);
+
+        return new DivisionQuestion(divisor, dividend);
+    }
+
     // generate a random number with the specified number of digits for the
     // integer and fractional parts of the number
     // if numIntegerPartDigits = 4 and numFractionalPartDigits = 3, a number such as
@@ -49,11 +69,20 @@ public class QuestionFactory {
             digits.append(rnd.nextInt(10));
             numIntegerPartDigits--;
         }
+
         // generate the fractional part digits (if there is a fractional part)
+        // make sure the last fractional part digit is not a 0, as otherwise you will
+        // end up with a number with a trailing zero like 25.340 and this trailing zero
+        // is meaningless
         if (numFractionalPartDigits > 0) {
             digits.append("."); // add the decimal point
             while (numFractionalPartDigits > 0) {
-                digits.append(rnd.nextInt(10));
+                int randomNum = rnd.nextInt(10);
+                if (numFractionalPartDigits == 1 && randomNum == 0) {
+                    // last fractional part digit cannot be 0
+                    continue;
+                }
+                digits.append(randomNum);
                 numFractionalPartDigits--;
             }
         }

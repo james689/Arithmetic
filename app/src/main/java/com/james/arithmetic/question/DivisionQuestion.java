@@ -2,16 +2,24 @@ package com.james.arithmetic.question;
 
 public class DivisionQuestion extends Question {
 
-    public DivisionQuestion(double op1, double op2) {
-        super(op1,op2);
+    public DivisionQuestion(double divisor, double dividend) {
+        super(divisor, dividend);
+    }
+
+    public double getDivisor() {
+        return getOperand1();
+    }
+
+    public double getDividend() {
+        return getOperand2();
     }
 
     public double getAnswer() {
-        return getOperand1() / getOperand2();
+        return getDividend() / getDivisor();
     }
 
     @Override
     public String toString() {
-        return getOperand1() + "/" + getOperand2();
+        return getDividend() + "/" + getDivisor();
     }
 }

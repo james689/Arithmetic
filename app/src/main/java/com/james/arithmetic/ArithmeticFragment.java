@@ -1,5 +1,6 @@
 package com.james.arithmetic;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.fragment.app.Fragment;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.james.arithmetic.question.Question;
 import com.james.arithmetic.question.QuestionFactory;
@@ -36,7 +39,6 @@ public class ArithmeticFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        // save whether the answer TextView is visible or not
         outState.putBoolean(KEY_ANSWER_VISIBLE, answerVisible);
         outState.putSerializable(KEY_PROBLEM_TYPE, selectedProblemType);
         outState.putSerializable(KEY_CURRENT_QUESTION, currentQuestion);
@@ -52,6 +54,7 @@ public class ArithmeticFragment extends Fragment {
             selectedProblemType = (ProblemType) savedInstanceState.getSerializable(KEY_PROBLEM_TYPE);
             currentQuestion = (Question) savedInstanceState.getSerializable(KEY_CURRENT_QUESTION);
         }
+
         answerTextView = view.findViewById(R.id.answer);
         answerTextView.setVisibility(answerVisible ? View.VISIBLE : View.GONE);
 
@@ -67,7 +70,6 @@ public class ArithmeticFragment extends Fragment {
         newQuestionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // generate a new question
                 Log.d(TAG, "new question button clicked, problem type = " + selectedProblemType);
                 newQuestion();
             }
@@ -83,6 +85,16 @@ public class ArithmeticFragment extends Fragment {
                 answerTextView.setVisibility(answerVisible ? View.GONE : View.VISIBLE);
                 answerVisible = !answerVisible;
                 updateShowAnswerButtonText();
+            }
+        });
+
+        Button settingsButton = view.findViewById(R.id.settings);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // launch the settings activity
+                Intent intent = new Intent(getActivity(), SettingsActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -136,10 +148,12 @@ public class ArithmeticFragment extends Fragment {
             case SUBTRACTION:
                 return QuestionFactory.createSubtractionQuestion(4,3,
                         4,3);
-            case MULTIPLICATION: QuestionFactory.createSubtractionQuestion(4,3,
+            case MULTIPLICATION: 
+                return QuestionFactory.createMultiplicationQuestion(4,3,
                     4,3);
-            case DIVISION: QuestionFactory.createSubtractionQuestion(4,3,
-                    4,3);
+            case DIVISION:
+                return QuestionFactory.createDivisionQuestion(6,0,
+                    2,0);
             default: return null;
         }
     }
