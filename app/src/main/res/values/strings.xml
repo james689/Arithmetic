@@ -11,4 +11,7 @@
     <string name="question">Question: 2345 + 1824</string>
     <string name="settings_title">Settings</string>
     <string name="settings_addition_title"><u>Addition</u></string>
+    <string name="settings_button_title">Settings</string>
+
+
 </resources>

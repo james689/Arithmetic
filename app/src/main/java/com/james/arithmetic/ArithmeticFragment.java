@@ -1,9 +1,12 @@
 package com.james.arithmetic;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.james.arithmetic.question.Question;
@@ -39,21 +43,49 @@ public class ArithmeticFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        Log.d(TAG, "onSaveInstanceState called");
         outState.putBoolean(KEY_ANSWER_VISIBLE, answerVisible);
         outState.putSerializable(KEY_PROBLEM_TYPE, selectedProblemType);
         outState.putSerializable(KEY_CURRENT_QUESTION, currentQuestion);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.arithmetic_fragment, container, false);
-
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate()");
         if (savedInstanceState != null) {
+            Log.d(TAG, "saved instance state in onCreate() not null");
             answerVisible = savedInstanceState.getBoolean(KEY_ANSWER_VISIBLE);
             selectedProblemType = (ProblemType) savedInstanceState.getSerializable(KEY_PROBLEM_TYPE);
             currentQuestion = (Question) savedInstanceState.getSerializable(KEY_CURRENT_QUESTION);
         }
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.arithmetic_fragment, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.settings:
+                // launch the settings activity
+                Intent intent = new Intent(getActivity(), SettingsActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.arithmetic_fragment, container, false);
+        Log.d(TAG, "onCreateView called");
 
         answerTextView = view.findViewById(R.id.answer);
         answerTextView.setVisibility(answerVisible ? View.VISIBLE : View.GONE);
@@ -85,16 +117,6 @@ public class ArithmeticFragment extends Fragment {
                 answerTextView.setVisibility(answerVisible ? View.GONE : View.VISIBLE);
                 answerVisible = !answerVisible;
                 updateShowAnswerButtonText();
-            }
-        });
-
-        Button settingsButton = view.findViewById(R.id.settings);
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // launch the settings activity
-                Intent intent = new Intent(getActivity(), SettingsActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -140,22 +162,51 @@ public class ArithmeticFragment extends Fragment {
         answerTextView.setText("Answer: " + currentQuestion.getAnswer());
     }
 
+    // Returns a new Question. The specific type of Question that is returned depends upon the
+    // currently selectedProblemType. A Question is configured using the app's shared preferences.
     private Question getQuestion() {
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
         switch (selectedProblemType) {
             case ADDITION:
-                return QuestionFactory.createAdditionQuestion(4,3,
-                        4,3);
+                int num1IntDigits = getNumDigits(R.string.key_addition_num1_int_digits);
+                int num1FractionalDigits = getNumDigits(R.string.key_addition_num1_fractional_digits);
+                int num2IntDigits = getNumDigits(R.string.key_addition_num2_int_digits);
+                int num2FractionalDigits = getNumDigits(R.string.key_addition_num2_fractional_digits);
+                return QuestionFactory.createAdditionQuestion(num1IntDigits,num1FractionalDigits,
+                        num2IntDigits,num2FractionalDigits);
             case SUBTRACTION:
-                return QuestionFactory.createSubtractionQuestion(4,3,
-                        4,3);
-            case MULTIPLICATION: 
-                return QuestionFactory.createMultiplicationQuestion(4,3,
-                    4,3);
+                int minuendIntDigits = getNumDigits(R.string.key_subtraction_minuend_int_digits);
+                int minuendFractionalDigits = getNumDigits(R.string.key_subtraction_minuend_fractional_digits);
+                int subtrahendIntDigits = getNumDigits(R.string.key_subtraction_subtrahend_int_digits);
+                int subtrahendFractionalDigits = getNumDigits(R.string.key_subtraction_subtrahend_fractional_digits);
+                return QuestionFactory.createSubtractionQuestion(minuendIntDigits, minuendFractionalDigits,
+                        subtrahendIntDigits, subtrahendFractionalDigits);
+            case MULTIPLICATION:
+                int multiplicationNum1IntDigits = getNumDigits(R.string.key_multiplication_num1_int_digits);
+                int multiplicationNum1FractionalDigits = getNumDigits(R.string.key_multiplication_num1_fractional_digits);
+                int multiplicationNum2IntDigits = getNumDigits(R.string.key_multiplication_num2_int_digits);
+                int multiplicationNum2FractionalDigits = getNumDigits(R.string.key_multiplication_num2_fractional_digits);
+                return QuestionFactory.createMultiplicationQuestion(multiplicationNum1IntDigits, multiplicationNum1FractionalDigits,
+                        multiplicationNum2IntDigits, multiplicationNum2FractionalDigits);
             case DIVISION:
-                return QuestionFactory.createDivisionQuestion(6,0,
-                    2,0);
+                int dividendIntDigits = getNumDigits(R.string.key_division_dividend_int_digits);
+                int dividendFractionalDigits = getNumDigits(R.string.key_division_dividend_fractional_digits);
+                int divisorIntDigits = getNumDigits(R.string.key_division_divisor_int_digits);
+                int divisorFractionalDigits = getNumDigits(R.string.key_division_divisor_fractional_digits);
+                return QuestionFactory.createDivisionQuestion(dividendIntDigits, dividendFractionalDigits,
+                        divisorIntDigits, divisorFractionalDigits);
             default: return null;
         }
+    }
+
+    // helper method that returns the number of digits for a preference
+    private int getNumDigits(int resourceId) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String key = getString(resourceId);
+        String preference = sharedPreferences.getString(key, null);
+        return Integer.parseInt(preference);
     }
 }
 

@@ -20,6 +20,9 @@ public class DivisionQuestion extends Question {
 
     @Override
     public String toString() {
-        return getDividend() + "/" + getDivisor();
+        String dividend = Double.toString(getDividend());
+        String divisor = Double.toString(getDivisor());
+
+        return Question.getWholeNumberEquivalent(dividend) + "/" + Question.getWholeNumberEquivalent(divisor);
     }
 }

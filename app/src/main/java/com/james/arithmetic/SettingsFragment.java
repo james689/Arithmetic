@@ -1,25 +1,53 @@
 package com.james.arithmetic;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.text.InputType;
+import android.widget.EditText;
 
-import androidx.fragment.app.Fragment;
+import androidx.preference.EditTextPreference;
+import androidx.preference.PreferenceFragmentCompat;
 
-public class SettingsFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
+
+public class SettingsFragment extends PreferenceFragmentCompat {
 
     public static final String TAG = SettingsFragment.class.getSimpleName();
 
-    public static SettingsFragment newInstance() {
-        return new SettingsFragment();
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R.xml.preferences, rootKey);
+
+        // get hold of all of the EditText preferences
+        List<EditTextPreference> editTextPreferences = new ArrayList<>();
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_addition_num1_int_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_addition_num1_fractional_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_addition_num2_int_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_addition_num2_fractional_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_subtraction_minuend_int_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_subtraction_minuend_fractional_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_subtraction_subtrahend_int_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_subtraction_subtrahend_fractional_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_multiplication_num1_int_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_multiplication_num1_fractional_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_multiplication_num2_int_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_multiplication_num2_fractional_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_division_dividend_int_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_division_dividend_fractional_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_division_divisor_int_digits)));
+        editTextPreferences.add((EditTextPreference) findPreference(getString(R.string.key_division_divisor_fractional_digits)));
+
+        // set a number input preference on each of them
+        NumberInputPreference numberInputPreference = new NumberInputPreference();
+        for (EditTextPreference preference : editTextPreferences) {
+            preference.setOnBindEditTextListener(numberInputPreference);
+        }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.settings_fragment, container, false);
-
-        return view;
+    private class NumberInputPreference implements EditTextPreference.OnBindEditTextListener {
+        @Override
+        public void onBindEditText(EditText editText) {
+            editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+        }
     }
 }

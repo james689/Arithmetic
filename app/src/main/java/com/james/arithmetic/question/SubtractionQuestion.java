@@ -12,6 +12,9 @@ public class SubtractionQuestion extends Question {
 
     @Override
     public String toString() {
-        return getOperand1() + "-" + getOperand2();
+        String operand1 = Double.toString(getOperand1());
+        String operand2 = Double.toString(getOperand2());
+
+        return Question.getWholeNumberEquivalent(operand1) + "-" + Question.getWholeNumberEquivalent(operand2);
     }
 }
