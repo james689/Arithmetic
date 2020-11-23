@@ -10,25 +10,25 @@
             app:key="@string/key_addition_num1_int_digits"
             app:title="@string/addition_num1_int_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="2" />
+            app:defaultValue="1" />
 
         <EditTextPreference
             app:key="@string/key_addition_num1_fractional_digits"
             app:title="@string/addition_num1_fractional_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="0" />
+            app:defaultValue="2" />
 
         <EditTextPreference
             app:key="@string/key_addition_num2_int_digits"
             app:title="@string/addition_num2_int_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="2" />
+            app:defaultValue="3" />
 
         <EditTextPreference
             app:key="@string/key_addition_num2_fractional_digits"
             app:title="@string/addition_num2_fractional_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="0" />
+            app:defaultValue="4" />
 
     </PreferenceCategory>
 
@@ -40,25 +40,25 @@
             app:key="@string/key_subtraction_minuend_int_digits"
             app:title="@string/subtraction_minuend_int_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="2" />
+            app:defaultValue="1" />
 
         <EditTextPreference
             app:key="@string/key_subtraction_minuend_fractional_digits"
             app:title="@string/subtraction_minuend_fractional_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="0" />
+            app:defaultValue="2" />
 
         <EditTextPreference
             app:key="@string/key_subtraction_subtrahend_int_digits"
             app:title="@string/subtraction_subtrahend_int_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="1" />
+            app:defaultValue="3" />
 
         <EditTextPreference
             app:key="@string/key_subtraction_subtrahend_fractional_digits"
             app:title="@string/subtraction_subtrahend_fractional_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="0" />
+            app:defaultValue="4" />
 
     </PreferenceCategory>
 
@@ -70,25 +70,25 @@
             app:key="@string/key_multiplication_num1_int_digits"
             app:title="@string/multiplication_num1_int_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="2" />
+            app:defaultValue="1" />
 
         <EditTextPreference
             app:key="@string/key_multiplication_num1_fractional_digits"
             app:title="@string/multiplication_num1_fractional_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="0" />
+            app:defaultValue="2" />
 
         <EditTextPreference
             app:key="@string/key_multiplication_num2_int_digits"
             app:title="@string/multiplication_num2_int_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="1" />
+            app:defaultValue="3" />
 
         <EditTextPreference
             app:key="@string/key_multiplication_num2_fractional_digits"
             app:title="@string/multiplication_num2_fractional_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="0" />
+            app:defaultValue="4" />
 
     </PreferenceCategory>
 
@@ -100,25 +100,35 @@
             app:key="@string/key_division_dividend_int_digits"
             app:title="@string/division_dividend_int_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="2" />
+            app:defaultValue="1" />
 
         <EditTextPreference
             app:key="@string/key_division_dividend_fractional_digits"
             app:title="@string/division_dividend_fractional_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="0" />
+            app:defaultValue="2" />
 
         <EditTextPreference
             app:key="@string/key_division_divisor_int_digits"
             app:title="@string/division_divisor_int_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="1" />
+            app:defaultValue="3" />
 
         <EditTextPreference
             app:key="@string/key_division_divisor_fractional_digits"
             app:title="@string/division_divisor_fractional_digits_title"
             app:useSimpleSummaryProvider="true"
-            app:defaultValue="0" />
+            app:defaultValue="4" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="@string/key_other_category"
+        app:title="@string/other_category_title">
+
+        <Preference
+            app:key="@string/key_reset_default_settings"
+            app:title="Reset Defaults" />
 
     </PreferenceCategory>
 

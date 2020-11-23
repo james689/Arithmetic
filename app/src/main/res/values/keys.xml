@@ -46,4 +46,8 @@
     <string name="key_division_divisor_fractional_digits">division_divisor_fractional_digits</string>
     <string name="division_divisor_fractional_digits_title">Divisor fractional digits</string>
 
+    <string name="key_other_category">other_category</string>
+    <string name="other_category_title">Other</string>
+    <string name="key_reset_default_settings">reset_default_settings</string>
+
 </resources>

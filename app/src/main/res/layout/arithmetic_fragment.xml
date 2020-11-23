@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:ignore="ExtraText">
 
     <TextView
         android:id="@+id/question"
@@ -35,15 +37,17 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/show_hide_answer" />
 
+    <!-- see https://stackoverflow.com/questions/54301416/android-bottomnavigationview-unselected-text-not-showing for the labelVisibilityMode -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
+        app:menu="@menu/bottom_navigation_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        app:labelVisibilityMode="labeled"
         android:background="@color/colorPrimary"
-        app:itemBackground="@color/colorPrimary"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:menu="@menu/bottom_navigation_main" />
+        app:itemIconTint="@drawable/bottom_navigation_view_item_tint"
+        app:itemTextColor="@drawable/bottom_navigation_view_item_tint"
+        />
 
 </RelativeLayout>
