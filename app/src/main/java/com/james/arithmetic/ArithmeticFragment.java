@@ -166,8 +166,6 @@ public class ArithmeticFragment extends Fragment {
     // currently selectedProblemType. A Question is configured using the app's shared preferences.
     private Question getQuestion() {
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
         switch (selectedProblemType) {
             case ADDITION:
                 int num1IntDigits = getNumDigits(R.string.key_addition_num1_int_digits);

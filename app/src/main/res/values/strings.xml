@@ -13,5 +13,16 @@
     <string name="settings_addition_title"><u>Addition</u></string>
     <string name="settings_button_title">Settings</string>
 
+    <!-- strings for the settings/preferences -->
+    <string name="pref_digits_zero_value">0</string>
+    <string name="pref_digits_one_value">1</string>
+    <string name="pref_digits_two_value">2</string>
+    <string name="pref_digits_three_value">3</string>
+    <string name="pref_digits_four_value">4</string>
+    <string name="pref_digits_five_value">5</string>
+    <string name="pref_digits_six_value">6</string>
+    <string name="pref_digits_seven_value">7</string>
+    <string name="pref_digits_eight_value">8</string>
+    <string name="pref_digits_nine_value">9</string>
 
 </resources>

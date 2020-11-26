@@ -2,15 +2,15 @@ package com.james.arithmetic.question;
 
 public class DivisionQuestion extends Question {
 
-    public DivisionQuestion(double divisor, double dividend) {
-        super(divisor, dividend);
-    }
-
-    public double getDivisor() {
-        return getOperand1();
+    public DivisionQuestion(double dividend, double divisor) {
+        super(dividend, divisor);
     }
 
     public double getDividend() {
+        return getOperand1();
+    }
+
+    public double getDivisor() {
         return getOperand2();
     }
 

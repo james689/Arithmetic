@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="pref_addition_int_digit_options">
+        <item>@string/pref_digits_one_value</item>
+        <item>@string/pref_digits_two_value</item>
+        <item>@string/pref_digits_three_value</item>
+        <item>@string/pref_digits_four_value</item>
+        <item>@string/pref_digits_five_value</item>
+        <item>@string/pref_digits_six_value</item>
+        <item>@string/pref_digits_seven_value</item>
+        <item>@string/pref_digits_eight_value</item>
+        <item>@string/pref_digits_nine_value</item>
+    </array>
+
+    <array name="pref_addition_fractional_digit_options">
+        <item>@string/pref_digits_zero_value</item>
+        <item>@string/pref_digits_one_value</item>
+        <item>@string/pref_digits_two_value</item>
+        <item>@string/pref_digits_three_value</item>
+        <item>@string/pref_digits_four_value</item>
+        <item>@string/pref_digits_five_value</item>
+    </array>
+
+    <array name="pref_subtraction_int_digit_options">
+        <item>@string/pref_digits_one_value</item>
+        <item>@string/pref_digits_two_value</item>
+        <item>@string/pref_digits_three_value</item>
+        <item>@string/pref_digits_four_value</item>
+        <item>@string/pref_digits_five_value</item>
+        <item>@string/pref_digits_six_value</item>
+        <item>@string/pref_digits_seven_value</item>
+        <item>@string/pref_digits_eight_value</item>
+        <item>@string/pref_digits_nine_value</item>
+    </array>
+
+    <array name="pref_subtraction_fractional_digit_options">
+        <item>@string/pref_digits_zero_value</item>
+        <item>@string/pref_digits_one_value</item>
+        <item>@string/pref_digits_two_value</item>
+        <item>@string/pref_digits_three_value</item>
+        <item>@string/pref_digits_four_value</item>
+        <item>@string/pref_digits_five_value</item>
+    </array>
+
+    <array name="pref_multiplication_int_digit_options">
+        <item>@string/pref_digits_one_value</item>
+        <item>@string/pref_digits_two_value</item>
+        <item>@string/pref_digits_three_value</item>
+        <item>@string/pref_digits_four_value</item>
+        <item>@string/pref_digits_five_value</item>
+        <item>@string/pref_digits_six_value</item>
+    </array>
+
+    <array name="pref_multiplication_fractional_digit_options">
+        <item>@string/pref_digits_zero_value</item>
+        <item>@string/pref_digits_one_value</item>
+        <item>@string/pref_digits_two_value</item>
+        <item>@string/pref_digits_three_value</item>
+        <item>@string/pref_digits_four_value</item>
+        <item>@string/pref_digits_five_value</item>
+    </array>
+
+    <array name="pref_division_int_digit_options">
+        <item>@string/pref_digits_one_value</item>
+        <item>@string/pref_digits_two_value</item>
+        <item>@string/pref_digits_three_value</item>
+        <item>@string/pref_digits_four_value</item>
+        <item>@string/pref_digits_five_value</item>
+        <item>@string/pref_digits_six_value</item>
+    </array>
+
+    <array name="pref_division_fractional_digit_options">
+        <item>@string/pref_digits_zero_value</item>
+        <item>@string/pref_digits_one_value</item>
+        <item>@string/pref_digits_two_value</item>
+        <item>@string/pref_digits_three_value</item>
+        <item>@string/pref_digits_four_value</item>
+        <item>@string/pref_digits_five_value</item>
+    </array>
+</resources>

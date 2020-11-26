@@ -2,18 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_addition"
-        android:enabled="true"
         android:title="@string/menu_addition" />
     <item
         android:id="@+id/action_subtraction"
-        android:enabled="true"
         android:title="@string/menu_subtraction" />
     <item
         android:id="@+id/action_multiplication"
-        android:enabled="true"
         android:title="@string/menu_multiplication" />
     <item
         android:id="@+id/action_division"
-        android:enabled="true"
         android:title="@string/menu_division" />
 </menu>

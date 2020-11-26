@@ -1,34 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         app:key="@string/key_addition_category"
         app:title="@string/addition_category_title">
 
-        <EditTextPreference
-            app:key="@string/key_addition_num1_int_digits"
-            app:title="@string/addition_num1_int_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="1" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_one_value"
+            android:key="@string/key_addition_num1_int_digits"
+            android:entries="@array/pref_addition_int_digit_options"
+            android:entryValues="@array/pref_addition_int_digit_options"
+            android:title="@string/addition_num1_int_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
-            app:key="@string/key_addition_num1_fractional_digits"
-            app:title="@string/addition_num1_fractional_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="2" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_zero_value"
+            android:entries="@array/pref_addition_fractional_digit_options"
+            android:entryValues="@array/pref_addition_fractional_digit_options"
+            android:key="@string/key_addition_num1_fractional_digits"
+            android:title="@string/addition_num1_fractional_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
-            app:key="@string/key_addition_num2_int_digits"
-            app:title="@string/addition_num2_int_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="3" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_one_value"
+            android:entries="@array/pref_addition_int_digit_options"
+            android:entryValues="@array/pref_addition_int_digit_options"
+            android:key="@string/key_addition_num2_int_digits"
+            android:title="@string/addition_num2_int_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
-            app:key="@string/key_addition_num2_fractional_digits"
-            app:title="@string/addition_num2_fractional_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="4" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_zero_value"
+            android:entries="@array/pref_addition_fractional_digit_options"
+            android:entryValues="@array/pref_addition_fractional_digit_options"
+            android:key="@string/key_addition_num2_fractional_digits"
+            android:title="@string/addition_num2_fractional_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
@@ -36,29 +44,37 @@
         app:key="@string/key_subtraction_category"
         app:title="@string/subtraction_category_title">
 
-        <EditTextPreference
-            app:key="@string/key_subtraction_minuend_int_digits"
-            app:title="@string/subtraction_minuend_int_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="1" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_one_value"
+            android:entries="@array/pref_subtraction_int_digit_options"
+            android:entryValues="@array/pref_subtraction_int_digit_options"
+            android:key="@string/key_subtraction_minuend_int_digits"
+            android:title="@string/subtraction_minuend_int_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
-            app:key="@string/key_subtraction_minuend_fractional_digits"
-            app:title="@string/subtraction_minuend_fractional_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="2" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_zero_value"
+            android:entries="@array/pref_subtraction_fractional_digit_options"
+            android:entryValues="@array/pref_subtraction_fractional_digit_options"
+            android:key="@string/key_subtraction_minuend_fractional_digits"
+            android:title="@string/subtraction_minuend_fractional_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
-            app:key="@string/key_subtraction_subtrahend_int_digits"
-            app:title="@string/subtraction_subtrahend_int_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="3" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_one_value"
+            android:entries="@array/pref_subtraction_int_digit_options"
+            android:entryValues="@array/pref_subtraction_int_digit_options"
+            android:key="@string/key_subtraction_subtrahend_int_digits"
+            android:title="@string/subtraction_subtrahend_int_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
-            app:key="@string/key_subtraction_subtrahend_fractional_digits"
-            app:title="@string/subtraction_subtrahend_fractional_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="4" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_zero_value"
+            android:entries="@array/pref_subtraction_fractional_digit_options"
+            android:entryValues="@array/pref_subtraction_fractional_digit_options"
+            android:key="@string/key_subtraction_subtrahend_fractional_digits"
+            android:title="@string/subtraction_subtrahend_fractional_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
@@ -66,29 +82,37 @@
         app:key="@string/key_multiplication_category"
         app:title="@string/multiplication_category_title">
 
-        <EditTextPreference
-            app:key="@string/key_multiplication_num1_int_digits"
-            app:title="@string/multiplication_num1_int_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="1" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_one_value"
+            android:entries="@array/pref_multiplication_int_digit_options"
+            android:entryValues="@array/pref_multiplication_int_digit_options"
+            android:key="@string/key_multiplication_num1_int_digits"
+            android:title="@string/multiplication_num1_int_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
-            app:key="@string/key_multiplication_num1_fractional_digits"
-            app:title="@string/multiplication_num1_fractional_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="2" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_zero_value"
+            android:entries="@array/pref_multiplication_fractional_digit_options"
+            android:entryValues="@array/pref_multiplication_fractional_digit_options"
+            android:key="@string/key_multiplication_num1_fractional_digits"
+            android:title="@string/multiplication_num1_fractional_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
-            app:key="@string/key_multiplication_num2_int_digits"
-            app:title="@string/multiplication_num2_int_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="3" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_one_value"
+            android:entries="@array/pref_multiplication_int_digit_options"
+            android:entryValues="@array/pref_multiplication_int_digit_options"
+            android:key="@string/key_multiplication_num2_int_digits"
+            android:title="@string/multiplication_num2_int_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
-            app:key="@string/key_multiplication_num2_fractional_digits"
-            app:title="@string/multiplication_num2_fractional_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="4" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_zero_value"
+            android:entries="@array/pref_multiplication_fractional_digit_options"
+            android:entryValues="@array/pref_multiplication_fractional_digit_options"
+            android:key="@string/key_multiplication_num2_fractional_digits"
+            android:title="@string/multiplication_num2_fractional_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
@@ -96,29 +120,37 @@
         app:key="@string/key_division_category"
         app:title="@string/division_category_title">
 
-        <EditTextPreference
-            app:key="@string/key_division_dividend_int_digits"
-            app:title="@string/division_dividend_int_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="1" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_one_value"
+            android:entries="@array/pref_division_int_digit_options"
+            android:entryValues="@array/pref_division_int_digit_options"
+            android:key="@string/key_division_dividend_int_digits"
+            android:title="@string/division_dividend_int_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
-            app:key="@string/key_division_dividend_fractional_digits"
-            app:title="@string/division_dividend_fractional_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="2" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_zero_value"
+            android:entries="@array/pref_division_fractional_digit_options"
+            android:entryValues="@array/pref_division_fractional_digit_options"
+            android:key="@string/key_division_dividend_fractional_digits"
+            android:title="@string/division_dividend_fractional_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
-            app:key="@string/key_division_divisor_int_digits"
-            app:title="@string/division_divisor_int_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="3" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_one_value"
+            android:entries="@array/pref_division_int_digit_options"
+            android:entryValues="@array/pref_division_int_digit_options"
+            android:key="@string/key_division_divisor_int_digits"
+            android:title="@string/division_divisor_int_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
-            app:key="@string/key_division_divisor_fractional_digits"
-            app:title="@string/division_divisor_fractional_digits_title"
-            app:useSimpleSummaryProvider="true"
-            app:defaultValue="4" />
+        <ListPreference
+            android:defaultValue="@string/pref_digits_zero_value"
+            android:entries="@array/pref_division_fractional_digit_options"
+            android:entryValues="@array/pref_division_fractional_digit_options"
+            android:key="@string/key_division_divisor_fractional_digits"
+            android:title="@string/division_divisor_fractional_digits_title"
+            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 

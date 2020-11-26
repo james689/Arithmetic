@@ -2,19 +2,27 @@ package com.james.arithmetic.question;
 
 public class SubtractionQuestion extends Question {
 
-    public SubtractionQuestion(double op1, double op2) {
-        super(op1,op2);
+    public SubtractionQuestion(double minuend, double subtrahend) {
+        super(minuend,subtrahend);
+    }
+
+    public double getMinuend() {
+        return getOperand1();
+    }
+
+    public double getSubtrahend() {
+        return getOperand2();
     }
 
     public double getAnswer() {
-        return getOperand1() - getOperand2();
+        return getMinuend() - getSubtrahend();
     }
 
     @Override
     public String toString() {
-        String operand1 = Double.toString(getOperand1());
-        String operand2 = Double.toString(getOperand2());
+        String minuend = Double.toString(getMinuend());
+        String subtrahend = Double.toString(getSubtrahend());
 
-        return Question.getWholeNumberEquivalent(operand1) + "-" + Question.getWholeNumberEquivalent(operand2);
+        return Question.getWholeNumberEquivalent(minuend) + "-" + Question.getWholeNumberEquivalent(subtrahend);
     }
 }

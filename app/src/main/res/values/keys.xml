@@ -50,4 +50,6 @@
     <string name="other_category_title">Other</string>
     <string name="key_reset_default_settings">reset_default_settings</string>
 
+    <string name="pref_color_key">pref_color_key</string>
+
 </resources>
