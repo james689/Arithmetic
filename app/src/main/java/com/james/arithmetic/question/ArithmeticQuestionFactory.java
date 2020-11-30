@@ -3,7 +3,7 @@ package com.james.arithmetic.question;
 import java.util.Random;
 
 // Helper class for creating the different types of Arithmetic Question
-public class QuestionFactory {
+public class ArithmeticQuestionFactory {
 
     public static AdditionQuestion createAdditionQuestion(int numIntDigitsOp1, int numFractionalDigitsOp1,
                                                            int numIntDigitsOp2, int numFractionalDigitsOp2) {
@@ -37,10 +37,9 @@ public class QuestionFactory {
         return new DivisionQuestion(dividend, divisor);
     }
 
-    // generate a random number with the specified number of digits for the
-    // integer and fractional parts of the number
-    // e.g. if numIntegerPartDigits = 4 and numFractionalPartDigits = 3, a number such as
-    // 1456.234 will be generated.
+    // generate a random number with the specified number of digits for the integer and fractional
+    // parts of the number e.g. if numIntegerPartDigits = 4 and numFractionalPartDigits = 3, a number
+    // such as 1456.234 will be generated.
     // if numIntegerPartDigits == 1, then a 0 will not be generated for the digit, since what is the point
     // in a problem such as 369 + 0 or even worst 234 / 0
     private static double randomNumber(int numIntegerPartDigits, int numFractionalPartDigits) {
@@ -49,9 +48,9 @@ public class QuestionFactory {
 
         // generate the integer part digits
         // the first digit should never be zero, as otherwise you will end up with a number with a
-        // leading zero like 03 or 04 and this leading zero is meaningless. Or if numIntegerPartDigits == 1,
-        // you will end up with 0 for your digit and you don't want any numbers in your arithmetic problems
-        // to be zero e.g. 369 + 0 or even worst 234 / 0
+        // leading zero like 03 or 04 in a multi-digit number and this leading zero is meaningless.
+        // Or if it is a single-digit number you will end up with 0 for your number and you don't want
+        // any numbers in your arithmetic problems to be zero e.g. 369 + 0 or even worst 234 / 0
         int randomNum = rnd.nextInt(10);
         while (randomNum == 0) {
             randomNum = rnd.nextInt(10);

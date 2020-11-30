@@ -1,6 +1,6 @@
 package com.james.arithmetic.question;
 
-public class SubtractionQuestion extends Question {
+public class SubtractionQuestion extends ArithmeticQuestion {
 
     public SubtractionQuestion(double minuend, double subtrahend) {
         super(minuend,subtrahend);
@@ -9,7 +9,6 @@ public class SubtractionQuestion extends Question {
     public double getMinuend() {
         return getOperand1();
     }
-
     public double getSubtrahend() {
         return getOperand2();
     }
@@ -23,6 +22,6 @@ public class SubtractionQuestion extends Question {
         String minuend = Double.toString(getMinuend());
         String subtrahend = Double.toString(getSubtrahend());
 
-        return Question.getWholeNumberEquivalent(minuend) + "-" + Question.getWholeNumberEquivalent(subtrahend);
+        return ArithmeticQuestion.getWholeNumberEquivalent(minuend) + "-" + ArithmeticQuestion.getWholeNumberEquivalent(subtrahend);
     }
 }

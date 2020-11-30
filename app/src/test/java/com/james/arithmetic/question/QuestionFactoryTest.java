@@ -5,7 +5,7 @@ import org.junit.Test;
 public class QuestionFactoryTest {
     @Test
     public void testCreateAdditionQuestion() {
-        AdditionQuestion additionQuestion = QuestionFactory.createAdditionQuestion(4,3,
+        AdditionQuestion additionQuestion = ArithmeticQuestionFactory.createAdditionQuestion(4,3,
                 4,3);
         System.out.println("additionQuestion created");
         System.out.println("op1 = " + additionQuestion.getOperand1());
@@ -18,7 +18,7 @@ public class QuestionFactoryTest {
 
     @Test
     public void testCreateSubtractionQuestion() {
-        SubtractionQuestion subtractionQuestion = QuestionFactory.createSubtractionQuestion(4,3,
+        SubtractionQuestion subtractionQuestion = ArithmeticQuestionFactory.createSubtractionQuestion(4,3,
                 4,3);
         System.out.println("subtractionQuestion created");
         System.out.println("op1 = " + subtractionQuestion.getOperand1());

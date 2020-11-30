@@ -17,8 +17,8 @@ import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.james.arithmetic.question.Question;
-import com.james.arithmetic.question.QuestionFactory;
+import com.james.arithmetic.question.ArithmeticQuestion;
+import com.james.arithmetic.question.ArithmeticQuestionFactory;
 
 public class ArithmeticFragment extends Fragment {
 
@@ -37,7 +37,7 @@ public class ArithmeticFragment extends Fragment {
 
     private ProblemType currentProblemType = defaultProblemType;
     private boolean answerVisible = false;
-    private Question currentQuestion = null;
+    private ArithmeticQuestion currentQuestion = null;
 
     public static ArithmeticFragment newInstance() {
         return new ArithmeticFragment();
@@ -60,7 +60,7 @@ public class ArithmeticFragment extends Fragment {
             Log.d(TAG, "saved instance state in onCreate() not null");
             answerVisible = savedInstanceState.getBoolean(KEY_ANSWER_VISIBLE);
             currentProblemType = (ProblemType) savedInstanceState.getSerializable(KEY_PROBLEM_TYPE);
-            currentQuestion = (Question) savedInstanceState.getSerializable(KEY_CURRENT_QUESTION);
+            currentQuestion = (ArithmeticQuestion) savedInstanceState.getSerializable(KEY_CURRENT_QUESTION);
         }
         setHasOptionsMenu(true);
     }
@@ -190,7 +190,7 @@ public class ArithmeticFragment extends Fragment {
 
     // Creates and returns a new Question. The specific type of Question that is created depends upon the
     // currentProblemType. A Question is configured using the app's shared preferences.
-    private Question createQuestion() {
+    private ArithmeticQuestion createQuestion() {
 
         switch (currentProblemType) {
             case ADDITION:
@@ -198,28 +198,28 @@ public class ArithmeticFragment extends Fragment {
                 int num1FractionalDigits = getNumDigits(R.string.key_addition_num1_fractional_digits);
                 int num2IntDigits = getNumDigits(R.string.key_addition_num2_int_digits);
                 int num2FractionalDigits = getNumDigits(R.string.key_addition_num2_fractional_digits);
-                return QuestionFactory.createAdditionQuestion(num1IntDigits,num1FractionalDigits,
+                return ArithmeticQuestionFactory.createAdditionQuestion(num1IntDigits,num1FractionalDigits,
                         num2IntDigits,num2FractionalDigits);
             case SUBTRACTION:
                 int minuendIntDigits = getNumDigits(R.string.key_subtraction_minuend_int_digits);
                 int minuendFractionalDigits = getNumDigits(R.string.key_subtraction_minuend_fractional_digits);
                 int subtrahendIntDigits = getNumDigits(R.string.key_subtraction_subtrahend_int_digits);
                 int subtrahendFractionalDigits = getNumDigits(R.string.key_subtraction_subtrahend_fractional_digits);
-                return QuestionFactory.createSubtractionQuestion(minuendIntDigits, minuendFractionalDigits,
+                return ArithmeticQuestionFactory.createSubtractionQuestion(minuendIntDigits, minuendFractionalDigits,
                         subtrahendIntDigits, subtrahendFractionalDigits);
             case MULTIPLICATION:
                 int multiplicationNum1IntDigits = getNumDigits(R.string.key_multiplication_num1_int_digits);
                 int multiplicationNum1FractionalDigits = getNumDigits(R.string.key_multiplication_num1_fractional_digits);
                 int multiplicationNum2IntDigits = getNumDigits(R.string.key_multiplication_num2_int_digits);
                 int multiplicationNum2FractionalDigits = getNumDigits(R.string.key_multiplication_num2_fractional_digits);
-                return QuestionFactory.createMultiplicationQuestion(multiplicationNum1IntDigits, multiplicationNum1FractionalDigits,
+                return ArithmeticQuestionFactory.createMultiplicationQuestion(multiplicationNum1IntDigits, multiplicationNum1FractionalDigits,
                         multiplicationNum2IntDigits, multiplicationNum2FractionalDigits);
             case DIVISION:
                 int dividendIntDigits = getNumDigits(R.string.key_division_dividend_int_digits);
                 int dividendFractionalDigits = getNumDigits(R.string.key_division_dividend_fractional_digits);
                 int divisorIntDigits = getNumDigits(R.string.key_division_divisor_int_digits);
                 int divisorFractionalDigits = getNumDigits(R.string.key_division_divisor_fractional_digits);
-                return QuestionFactory.createDivisionQuestion(dividendIntDigits, dividendFractionalDigits,
+                return ArithmeticQuestionFactory.createDivisionQuestion(dividendIntDigits, dividendFractionalDigits,
                         divisorIntDigits, divisorFractionalDigits);
             default: return null;
         }
