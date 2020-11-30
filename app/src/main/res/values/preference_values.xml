@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- see https://medium.com/@alexstyl/android-tips-resourcify-your-preference-keys-65a1f6889207 -->
+<!-- Below are all the string resources for use with the settings/preferences -->
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <string name="pref_digits_zero_value">0</string>
+    <string name="pref_digits_one_value">1</string>
+    <string name="pref_digits_two_value">2</string>
+    <string name="pref_digits_three_value">3</string>
+    <string name="pref_digits_four_value">4</string>
+    <string name="pref_digits_five_value">5</string>
+    <string name="pref_digits_six_value">6</string>
+    <string name="pref_digits_seven_value">7</string>
+    <string name="pref_digits_eight_value">8</string>
+    <string name="pref_digits_nine_value">9</string>
 
     <string name="key_addition_category">addition_category</string>
     <string name="addition_category_title">Addition</string>
@@ -49,7 +61,5 @@
     <string name="key_other_category">other_category</string>
     <string name="other_category_title">Other</string>
     <string name="key_reset_default_settings">reset_default_settings</string>
-
-    <string name="pref_color_key">pref_color_key</string>
 
 </resources>

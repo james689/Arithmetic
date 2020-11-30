@@ -12,7 +12,8 @@ import androidx.fragment.app.FragmentManager;
  */
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
-    protected abstract Fragment createFragment();
+    protected abstract Fragment createFragment(); // subclass must override this method to specify
+    // the fragment that will be hosted.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

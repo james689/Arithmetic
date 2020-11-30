@@ -23,16 +23,19 @@ import com.james.arithmetic.question.QuestionFactory;
 public class ArithmeticFragment extends Fragment {
 
     public static final String TAG = ArithmeticFragment.class.getSimpleName();
+    // keys used for saving state across device configuration changes such as screen rotation
     public static final String KEY_ANSWER_VISIBLE = "answer_visible";
     public static final String KEY_PROBLEM_TYPE = "problem_type";
     public static final String KEY_CURRENT_QUESTION = "current_question";
 
     public enum ProblemType {ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION}
+    public static final ProblemType defaultProblemType = ProblemType.ADDITION;
 
-    private ProblemType selectedProblemType = ProblemType.ADDITION;
     private TextView questionTextView;
     private TextView answerTextView;
-    private Button showAnswerButton;
+    private Button showHideAnswerButton;
+
+    private ProblemType currentProblemType = defaultProblemType;
     private boolean answerVisible = false;
     private Question currentQuestion = null;
 
@@ -45,7 +48,7 @@ public class ArithmeticFragment extends Fragment {
         super.onSaveInstanceState(outState);
         Log.d(TAG, "onSaveInstanceState called");
         outState.putBoolean(KEY_ANSWER_VISIBLE, answerVisible);
-        outState.putSerializable(KEY_PROBLEM_TYPE, selectedProblemType);
+        outState.putSerializable(KEY_PROBLEM_TYPE, currentProblemType);
         outState.putSerializable(KEY_CURRENT_QUESTION, currentQuestion);
     }
 
@@ -56,7 +59,7 @@ public class ArithmeticFragment extends Fragment {
         if (savedInstanceState != null) {
             Log.d(TAG, "saved instance state in onCreate() not null");
             answerVisible = savedInstanceState.getBoolean(KEY_ANSWER_VISIBLE);
-            selectedProblemType = (ProblemType) savedInstanceState.getSerializable(KEY_PROBLEM_TYPE);
+            currentProblemType = (ProblemType) savedInstanceState.getSerializable(KEY_PROBLEM_TYPE);
             currentQuestion = (Question) savedInstanceState.getSerializable(KEY_CURRENT_QUESTION);
         }
         setHasOptionsMenu(true);
@@ -84,32 +87,33 @@ public class ArithmeticFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.arithmetic_fragment, container, false);
         Log.d(TAG, "onCreateView called");
-
-        answerTextView = view.findViewById(R.id.answer);
-        answerTextView.setVisibility(answerVisible ? View.VISIBLE : View.GONE);
+        View view = inflater.inflate(R.layout.arithmetic_fragment, container, false);
 
         questionTextView = view.findViewById(R.id.question);
+        answerTextView = view.findViewById(R.id.answer);
+
         if (currentQuestion == null) {
-            questionTextView.setText("1+1");
+            // create a new question to display
+            newQuestion();
         } else {
-            questionTextView.setText(currentQuestion.toString());
-            answerTextView.setText("Answer: " + currentQuestion.getAnswer());
+            updateQuestionAndAnswerViews();
         }
+
+        answerTextView.setVisibility(answerVisible ? View.VISIBLE : View.GONE);
 
         Button newQuestionButton = view.findViewById(R.id.new_question);
         newQuestionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "new question button clicked, problem type = " + selectedProblemType);
+                Log.d(TAG, "new question button clicked, problem type = " + currentProblemType);
                 newQuestion();
             }
         });
 
-        showAnswerButton = view.findViewById(R.id.show_hide_answer);
+        showHideAnswerButton = view.findViewById(R.id.show_hide_answer);
         updateShowAnswerButtonText();
-        showAnswerButton.setOnClickListener(new View.OnClickListener() {
+        showHideAnswerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // show/hide the answer
@@ -127,19 +131,19 @@ public class ArithmeticFragment extends Fragment {
                 switch (menuItem.getItemId()) {
                     case R.id.action_addition:
                         Log.d(TAG, "addition selected");
-                        selectedProblemType = ProblemType.ADDITION;
+                        currentProblemType = ProblemType.ADDITION;
                         return true;
                     case R.id.action_subtraction:
                         Log.d(TAG, "subtraction selected");
-                        selectedProblemType = ProblemType.SUBTRACTION;
+                        currentProblemType = ProblemType.SUBTRACTION;
                         return true;
                     case R.id.action_multiplication:
                         Log.d(TAG, "multiplication selected");
-                        selectedProblemType = ProblemType.MULTIPLICATION;
+                        currentProblemType = ProblemType.MULTIPLICATION;
                         return true;
                     case R.id.action_division:
                         Log.d(TAG, "division selected");
-                        selectedProblemType = ProblemType.DIVISION;
+                        currentProblemType = ProblemType.DIVISION;
                         return true;
                     default:
                         return false;
@@ -147,26 +151,48 @@ public class ArithmeticFragment extends Fragment {
             }
         });
 
+        // set selected item in bottom navigation view depending on currently selected problem type
+        switch (currentProblemType) {
+            case ADDITION:
+                bottomNavigationView.setSelectedItemId(R.id.action_addition);
+                break;
+            case SUBTRACTION:
+                bottomNavigationView.setSelectedItemId(R.id.action_subtraction);
+                break;
+            case MULTIPLICATION:
+                bottomNavigationView.setSelectedItemId(R.id.action_multiplication);
+                break;
+            case DIVISION:
+                bottomNavigationView.setSelectedItemId(R.id.action_division);
+                break;
+        }
+
         return view;
     }
 
-    // helper methods
+    ////////////////////// helper methods ///////////////////////////////////////
 
     private void updateShowAnswerButtonText() {
-        showAnswerButton.setText(answerVisible ? R.string.hide_answer : R.string.show_answer);
+        showHideAnswerButton.setText(answerVisible ? R.string.hide_answer : R.string.show_answer);
     }
 
     private void newQuestion() {
-        currentQuestion = getQuestion();
+        currentQuestion = createQuestion();
+        updateQuestionAndAnswerViews();
+        //questionTextView.setText(currentQuestion.toString());
+        //answerTextView.setText("Answer: " + currentQuestion.getAnswer());
+    }
+
+    private void updateQuestionAndAnswerViews() {
         questionTextView.setText(currentQuestion.toString());
         answerTextView.setText("Answer: " + currentQuestion.getAnswer());
     }
 
-    // Returns a new Question. The specific type of Question that is returned depends upon the
-    // currently selectedProblemType. A Question is configured using the app's shared preferences.
-    private Question getQuestion() {
+    // Creates and returns a new Question. The specific type of Question that is created depends upon the
+    // currentProblemType. A Question is configured using the app's shared preferences.
+    private Question createQuestion() {
 
-        switch (selectedProblemType) {
+        switch (currentProblemType) {
             case ADDITION:
                 int num1IntDigits = getNumDigits(R.string.key_addition_num1_int_digits);
                 int num1FractionalDigits = getNumDigits(R.string.key_addition_num1_fractional_digits);

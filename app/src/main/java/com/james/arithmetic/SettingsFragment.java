@@ -33,7 +33,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
                 // manually refresh/reload the preferences that are displayed on the screen since
                 // they won't be automatically refreshed otherwise.
-                //PreferenceManager.setDefaultValues(getActivity(), R.xml.preferences, true);
                 // see https://stackoverflow.com/questions/46655743/android-restore-applications-default-preferences
                 getPreferenceScreen().removeAll();
                 onCreatePreferences(null,null); // or onCreate(null) in your code

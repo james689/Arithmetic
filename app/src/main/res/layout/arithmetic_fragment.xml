@@ -40,7 +40,7 @@
     <!-- see https://stackoverflow.com/questions/54301416/android-bottomnavigationview-unselected-text-not-showing for the labelVisibilityMode -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        app:menu="@menu/bottom_navigation_main"
+        app:menu="@menu/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
