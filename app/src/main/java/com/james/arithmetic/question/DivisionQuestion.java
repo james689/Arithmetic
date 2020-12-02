@@ -1,5 +1,7 @@
 package com.james.arithmetic.question;
 
+import java.text.DecimalFormat;
+
 public class DivisionQuestion extends ArithmeticQuestion {
 
     public DivisionQuestion(double dividend, double divisor) {
@@ -19,9 +21,11 @@ public class DivisionQuestion extends ArithmeticQuestion {
 
     @Override
     public String toString() {
-        String dividend = Double.toString(getDividend());
-        String divisor = Double.toString(getDivisor());
+        DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
 
-        return ArithmeticQuestion.getWholeNumberEquivalent(dividend) + "/" + ArithmeticQuestion.getWholeNumberEquivalent(divisor);
+        String dividend = decimalFormat.format(getDividend());
+        String divisor = decimalFormat.format(getDivisor());
+
+        return ArithmeticQuestion.removeTrailingZeros(dividend) + "/" + ArithmeticQuestion.removeTrailingZeros(divisor);
     }
 }

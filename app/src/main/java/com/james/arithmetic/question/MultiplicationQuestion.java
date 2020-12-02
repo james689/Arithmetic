@@ -1,5 +1,7 @@
 package com.james.arithmetic.question;
 
+import java.text.DecimalFormat;
+
 public class MultiplicationQuestion extends ArithmeticQuestion {
 
     public MultiplicationQuestion(double op1, double op2) {
@@ -12,9 +14,11 @@ public class MultiplicationQuestion extends ArithmeticQuestion {
 
     @Override
     public String toString() {
-        String operand1 = Double.toString(getOperand1());
-        String operand2 = Double.toString(getOperand2());
+        DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
 
-        return ArithmeticQuestion.getWholeNumberEquivalent(operand1) + "x" + ArithmeticQuestion.getWholeNumberEquivalent(operand2);
+        String operand1 = decimalFormat.format(getOperand1());
+        String operand2 = decimalFormat.format(getOperand2());
+
+        return ArithmeticQuestion.removeTrailingZeros(operand1) + "x" + ArithmeticQuestion.removeTrailingZeros(operand2);
     }
 }

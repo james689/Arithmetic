@@ -1,5 +1,7 @@
 package com.james.arithmetic.question;
 
+import java.text.DecimalFormat;
+
 public class SubtractionQuestion extends ArithmeticQuestion {
 
     public SubtractionQuestion(double minuend, double subtrahend) {
@@ -19,9 +21,11 @@ public class SubtractionQuestion extends ArithmeticQuestion {
 
     @Override
     public String toString() {
-        String minuend = Double.toString(getMinuend());
-        String subtrahend = Double.toString(getSubtrahend());
+        DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
 
-        return ArithmeticQuestion.getWholeNumberEquivalent(minuend) + "-" + ArithmeticQuestion.getWholeNumberEquivalent(subtrahend);
+        String minuend = decimalFormat.format(getMinuend());
+        String subtrahend = decimalFormat.format(getSubtrahend());
+
+        return ArithmeticQuestion.removeTrailingZeros(minuend) + "-" + ArithmeticQuestion.removeTrailingZeros(subtrahend);
     }
 }

@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Arithmetic</string>
-    <string name="menu_addition">Addition</string>
-    <string name="menu_subtraction">Subtraction</string>
-    <string name="menu_multiplication">Multiplication</string>
-    <string name="menu_division">Division</string>
+    <string name="menu_addition">Add</string>
+    <string name="menu_subtraction">Subtract</string>
+    <string name="menu_multiplication">Multiply</string>
+    <string name="menu_division">Divide</string>
     <string name="new_question">New Question</string>
     <string name="show_answer">Show Answer</string>
     <string name="hide_answer">Hide Answer</string>

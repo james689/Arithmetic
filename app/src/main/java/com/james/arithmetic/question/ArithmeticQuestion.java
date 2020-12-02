@@ -23,13 +23,32 @@ public abstract class ArithmeticQuestion implements Serializable {
 
     public abstract double getAnswer(); // this method must be defined by the subclass
 
-    // helper method. lop's off the trailing zero if required e.g. if the number is "8.0"
-    // then this method will return "8".
-    public static String getWholeNumberEquivalent(String number) {
-        String fractionalPart = number.substring(number.indexOf(".")+1);
-        if (fractionalPart.equals("0")) {
-            number = number.substring(0, number.indexOf("."));
+    // Formats a number so that it does not have any unesscessary trailing zeros
+    // e.g. "23.4500" will be converted to "23.45" and "23.0" will be converted to
+    // "23"
+    public static String removeTrailingZeros(String number) {
+
+        int decimalPointIndex = number.indexOf(".");
+        if (decimalPointIndex == -1) {
+            // no decimal point found, so just return number as is
+            return number;
         }
-        return number;
+
+        // remove unecessary trailing zeros
+        StringBuilder sb = new StringBuilder(number);
+        while (true) {
+            int lastIndex = sb.length()-1;
+            if (sb.charAt(lastIndex) == '0') {
+                sb.deleteCharAt(lastIndex);
+            } else if (sb.charAt(lastIndex) == '.') {
+                sb.deleteCharAt(lastIndex);
+                break;
+            } else {
+                // encountered a non zero digit
+                break;
+            }
+        }
+
+        return sb.toString();
     }
 }
