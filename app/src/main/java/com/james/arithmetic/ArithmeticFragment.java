@@ -194,31 +194,31 @@ public class ArithmeticFragment extends Fragment {
 
         switch (currentProblemType) {
             case ADDITION:
-                int num1IntDigits = getNumDigits(R.string.key_addition_num1_int_digits);
-                int num1FractionalDigits = getNumDigits(R.string.key_addition_num1_fractional_digits);
-                int num2IntDigits = getNumDigits(R.string.key_addition_num2_int_digits);
-                int num2FractionalDigits = getNumDigits(R.string.key_addition_num2_fractional_digits);
+                int num1IntDigits = getNumDigits(R.string.key_addition_num1_int_digits, R.string.addition_num1_int_digits_default_value);
+                int num1FractionalDigits = getNumDigits(R.string.key_addition_num1_fractional_digits, R.string.addition_num1_fractional_digits_default_value);
+                int num2IntDigits = getNumDigits(R.string.key_addition_num2_int_digits, R.string.addition_num2_int_digits_default_value);
+                int num2FractionalDigits = getNumDigits(R.string.key_addition_num2_fractional_digits, R.string.addition_num2_fractional_digits_default_value);
                 return ArithmeticQuestionFactory.createAdditionQuestion(num1IntDigits,num1FractionalDigits,
                         num2IntDigits,num2FractionalDigits);
             case SUBTRACTION:
-                int minuendIntDigits = getNumDigits(R.string.key_subtraction_minuend_int_digits);
-                int minuendFractionalDigits = getNumDigits(R.string.key_subtraction_minuend_fractional_digits);
-                int subtrahendIntDigits = getNumDigits(R.string.key_subtraction_subtrahend_int_digits);
-                int subtrahendFractionalDigits = getNumDigits(R.string.key_subtraction_subtrahend_fractional_digits);
+                int minuendIntDigits = getNumDigits(R.string.key_subtraction_minuend_int_digits, R.string.subtraction_minuend_int_digits_default_value);
+                int minuendFractionalDigits = getNumDigits(R.string.key_subtraction_minuend_fractional_digits, R.string.subtraction_minuend_fractional_digits_default_value);
+                int subtrahendIntDigits = getNumDigits(R.string.key_subtraction_subtrahend_int_digits, R.string.subtraction_subtrahend_int_digits_default_value);
+                int subtrahendFractionalDigits = getNumDigits(R.string.key_subtraction_subtrahend_fractional_digits, R.string.subtraction_subtrahend_fractional_digits_default_value);
                 return ArithmeticQuestionFactory.createSubtractionQuestion(minuendIntDigits, minuendFractionalDigits,
                         subtrahendIntDigits, subtrahendFractionalDigits);
             case MULTIPLICATION:
-                int multiplicationNum1IntDigits = getNumDigits(R.string.key_multiplication_num1_int_digits);
-                int multiplicationNum1FractionalDigits = getNumDigits(R.string.key_multiplication_num1_fractional_digits);
-                int multiplicationNum2IntDigits = getNumDigits(R.string.key_multiplication_num2_int_digits);
-                int multiplicationNum2FractionalDigits = getNumDigits(R.string.key_multiplication_num2_fractional_digits);
+                int multiplicationNum1IntDigits = getNumDigits(R.string.key_multiplication_num1_int_digits, R.string.multiplication_num1_int_digits_default_value);
+                int multiplicationNum1FractionalDigits = getNumDigits(R.string.key_multiplication_num1_fractional_digits, R.string.multiplication_num1_fractional_digits_default_value);
+                int multiplicationNum2IntDigits = getNumDigits(R.string.key_multiplication_num2_int_digits, R.string.multiplication_num2_int_digits_default_value);
+                int multiplicationNum2FractionalDigits = getNumDigits(R.string.key_multiplication_num2_fractional_digits, R.string.multiplication_num2_fractional_digits_default_value);
                 return ArithmeticQuestionFactory.createMultiplicationQuestion(multiplicationNum1IntDigits, multiplicationNum1FractionalDigits,
                         multiplicationNum2IntDigits, multiplicationNum2FractionalDigits);
             case DIVISION:
-                int dividendIntDigits = getNumDigits(R.string.key_division_dividend_int_digits);
-                int dividendFractionalDigits = getNumDigits(R.string.key_division_dividend_fractional_digits);
-                int divisorIntDigits = getNumDigits(R.string.key_division_divisor_int_digits);
-                int divisorFractionalDigits = getNumDigits(R.string.key_division_divisor_fractional_digits);
+                int dividendIntDigits = getNumDigits(R.string.key_division_dividend_int_digits, R.string.division_dividend_int_digits_default_value);
+                int dividendFractionalDigits = getNumDigits(R.string.key_division_dividend_fractional_digits, R.string.division_dividend_fractional_digits_default_value);
+                int divisorIntDigits = getNumDigits(R.string.key_division_divisor_int_digits, R.string.division_divisor_int_digits_default_value);
+                int divisorFractionalDigits = getNumDigits(R.string.key_division_divisor_fractional_digits, R.string.division_dividend_fractional_digits_default_value);
                 return ArithmeticQuestionFactory.createDivisionQuestion(dividendIntDigits, dividendFractionalDigits,
                         divisorIntDigits, divisorFractionalDigits);
             default: return null;
@@ -226,10 +226,11 @@ public class ArithmeticFragment extends Fragment {
     }
 
     // helper method that returns the number of digits for a preference
-    private int getNumDigits(int resourceId) {
+    private int getNumDigits(int resourceId, int defaultValueResourceId) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String key = getString(resourceId);
-        String preference = sharedPreferences.getString(key, null);
+        String defaultValue = getString(defaultValueResourceId);
+        String preference = sharedPreferences.getString(key, defaultValue);
         return Integer.parseInt(preference);
     }
 }

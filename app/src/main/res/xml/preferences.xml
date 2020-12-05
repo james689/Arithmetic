@@ -7,7 +7,7 @@
         app:title="@string/addition_category_title">
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_one_value"
+            android:defaultValue="@string/addition_num1_int_digits_default_value"
             android:key="@string/key_addition_num1_int_digits"
             android:entries="@array/pref_addition_int_digit_options"
             android:entryValues="@array/pref_addition_int_digit_options"
@@ -15,7 +15,7 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_zero_value"
+            android:defaultValue="@string/addition_num1_fractional_digits_default_value"
             android:entries="@array/pref_addition_fractional_digit_options"
             android:entryValues="@array/pref_addition_fractional_digit_options"
             android:key="@string/key_addition_num1_fractional_digits"
@@ -23,7 +23,7 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_one_value"
+            android:defaultValue="@string/addition_num2_int_digits_default_value"
             android:entries="@array/pref_addition_int_digit_options"
             android:entryValues="@array/pref_addition_int_digit_options"
             android:key="@string/key_addition_num2_int_digits"
@@ -31,7 +31,7 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_zero_value"
+            android:defaultValue="@string/addition_num2_fractional_digits_default_value"
             android:entries="@array/pref_addition_fractional_digit_options"
             android:entryValues="@array/pref_addition_fractional_digit_options"
             android:key="@string/key_addition_num2_fractional_digits"
@@ -45,7 +45,7 @@
         app:title="@string/subtraction_category_title">
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_one_value"
+            android:defaultValue="@string/subtraction_minuend_int_digits_default_value"
             android:entries="@array/pref_subtraction_int_digit_options"
             android:entryValues="@array/pref_subtraction_int_digit_options"
             android:key="@string/key_subtraction_minuend_int_digits"
@@ -53,7 +53,7 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_zero_value"
+            android:defaultValue="@string/subtraction_minuend_fractional_digits_default_value"
             android:entries="@array/pref_subtraction_fractional_digit_options"
             android:entryValues="@array/pref_subtraction_fractional_digit_options"
             android:key="@string/key_subtraction_minuend_fractional_digits"
@@ -61,7 +61,7 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_one_value"
+            android:defaultValue="@string/subtraction_subtrahend_int_digits_default_value"
             android:entries="@array/pref_subtraction_int_digit_options"
             android:entryValues="@array/pref_subtraction_int_digit_options"
             android:key="@string/key_subtraction_subtrahend_int_digits"
@@ -69,7 +69,7 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_zero_value"
+            android:defaultValue="@string/subtraction_subtrahend_fractional_digits_default_value"
             android:entries="@array/pref_subtraction_fractional_digit_options"
             android:entryValues="@array/pref_subtraction_fractional_digit_options"
             android:key="@string/key_subtraction_subtrahend_fractional_digits"
@@ -83,7 +83,7 @@
         app:title="@string/multiplication_category_title">
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_one_value"
+            android:defaultValue="@string/multiplication_num1_int_digits_default_value"
             android:entries="@array/pref_multiplication_int_digit_options"
             android:entryValues="@array/pref_multiplication_int_digit_options"
             android:key="@string/key_multiplication_num1_int_digits"
@@ -91,7 +91,7 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_zero_value"
+            android:defaultValue="@string/multiplication_num1_fractional_digits_default_value"
             android:entries="@array/pref_multiplication_fractional_digit_options"
             android:entryValues="@array/pref_multiplication_fractional_digit_options"
             android:key="@string/key_multiplication_num1_fractional_digits"
@@ -99,7 +99,7 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_one_value"
+            android:defaultValue="@string/multiplication_num2_int_digits_default_value"
             android:entries="@array/pref_multiplication_int_digit_options"
             android:entryValues="@array/pref_multiplication_int_digit_options"
             android:key="@string/key_multiplication_num2_int_digits"
@@ -107,7 +107,7 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_zero_value"
+            android:defaultValue="@string/multiplication_num2_fractional_digits_default_value"
             android:entries="@array/pref_multiplication_fractional_digit_options"
             android:entryValues="@array/pref_multiplication_fractional_digit_options"
             android:key="@string/key_multiplication_num2_fractional_digits"
@@ -121,7 +121,7 @@
         app:title="@string/division_category_title">
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_one_value"
+            android:defaultValue="@string/division_dividend_int_digits_default_value"
             android:entries="@array/pref_division_int_digit_options"
             android:entryValues="@array/pref_division_int_digit_options"
             android:key="@string/key_division_dividend_int_digits"
@@ -129,7 +129,7 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_zero_value"
+            android:defaultValue="@string/division_dividend_fractional_digits_default_value"
             android:entries="@array/pref_division_fractional_digit_options"
             android:entryValues="@array/pref_division_fractional_digit_options"
             android:key="@string/key_division_dividend_fractional_digits"
@@ -137,7 +137,7 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_one_value"
+            android:defaultValue="@string/division_divisor_int_digits_default_value"
             android:entries="@array/pref_division_int_digit_options"
             android:entryValues="@array/pref_division_int_digit_options"
             android:key="@string/key_division_divisor_int_digits"
@@ -145,7 +145,7 @@
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
-            android:defaultValue="@string/pref_digits_zero_value"
+            android:defaultValue="@string/division_divisor_fractional_digits_default_value"
             android:entries="@array/pref_division_fractional_digit_options"
             android:entryValues="@array/pref_division_fractional_digit_options"
             android:key="@string/key_division_divisor_fractional_digits"
